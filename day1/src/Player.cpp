@@ -1,4 +1,4 @@
-#include "day1/Player.hpp"
+#include "Player.hpp"
 
 Player::Player() : coordinates({0, 0}), bearing(NORTH) {}
 

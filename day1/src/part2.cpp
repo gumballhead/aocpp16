@@ -10,17 +10,17 @@ using namespace std;
 
 int main() {
   Player player;
-  unordered_set<Coordinates, CoordinatesHash> path;
+  unordered_set<Coordinates, CoordinatesHash> path { player.getCoordinates() };
 
   auto instructions = ranges::istream_range<Instruction>(cin);
 
-  const bool& found = ranges::any_of(instructions, [&player, &path] (const Instruction& instruction) {
+  const bool found = ranges::any_of(instructions, [&player, &path] (const Instruction& instruction) {
     player.turn(instruction.direction);
 
     for (int i = 0; i < instruction.distance; i++) {
       player.walk();
 
-      const Coordinates& coordinates = player.getCoordinates();
+      const Coordinates coordinates = player.getCoordinates();
 
       if (path.find(coordinates) != path.end()) {
         return true;
@@ -34,10 +34,10 @@ int main() {
 
   if (!found) {
     cout << "Couldn't find Easter Bunny HQ!" << endl;
-    exit(EXIT_FAILURE);
+    return EXIT_FAILURE;
   }
 
-  const Coordinates& coordinates = player.getCoordinates();
+  const Coordinates coordinates = player.getCoordinates();
   cout << abs(coordinates.x) + abs(coordinates.y) << endl;
 
   return EXIT_SUCCESS;

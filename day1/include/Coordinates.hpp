@@ -15,7 +15,7 @@ class CoordinatesHash {
   const hash<int> hashInt;
 
   public:
-    size_t operator () (const Coordinates &coordinates) const {
+    size_t operator () (const Coordinates& coordinates) const {
       return 17 + (31 * hashInt(coordinates.x)) + (31 * hashInt(coordinates.y));
     }
 };
