@@ -1,6 +1,5 @@
 bin
 input
-lib
 Makefile
 cmake_install.cmake
 CMakeFiles
