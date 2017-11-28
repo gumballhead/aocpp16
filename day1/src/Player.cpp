@@ -1,6 +1,7 @@
 #include "Player.hpp"
 
-Player::Player() : coordinates({0, 0}), bearing(NORTH) {}
+Player::Player()
+  : bearing(NORTH), coordinates({0, 0}) {}
 
 Player::Player(const Bearing& bearing, const Coordinates& coordinates)
   : bearing(bearing), coordinates(coordinates) {}

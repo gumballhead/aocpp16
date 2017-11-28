@@ -11,7 +11,7 @@ int main() {
   Player player;
   auto instructions = ranges::istream_range<Instruction>(cin);
 
-  ranges::for_each(instructions, [&player] (const Instruction &instruction) {
+  ranges::for_each(instructions, [&player] (const Instruction& instruction) {
     player.move(instruction);
   });
 
