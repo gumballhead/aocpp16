@@ -5,13 +5,13 @@
 
 #include "Player.cpp"
 
-using namespace std;
+using namespace ranges;
 
 int main() {
   Player player;
-  auto instructions = ranges::istream_range<Instruction>(cin);
+  auto instructions = istream_range<Instruction>(cin);
 
-  ranges::for_each(instructions, [&player] (const Instruction& instruction) {
+  for_each(instructions, [&player] (const Instruction& instruction) {
     player.move(instruction);
   });
 

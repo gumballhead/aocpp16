@@ -9,12 +9,12 @@
 
 #include "Keypad.hpp"
 
-using namespace std;
+using namespace ranges;
 
 Keypad::Keypad(const Entries& entries): entries(entries) {}
 
 int Keypad::boundedIndex(const int& position, const int& translation) const {
-  return min(max(0, position + translation), static_cast<int>(entries.size()) - 1);
+  return std::min(std::max(0, position + translation), static_cast<int>(entries.size()) - 1);
 }
 
 Coordinates Keypad::operator() (const Coordinates& last, const char& instruction) const {
@@ -50,15 +50,13 @@ char Keypad::getEntry(const Coordinates& coordinates) const {
 }
 
 string getCode(istream& input, const Keypad& keypad, Coordinates coordinates) {
-  auto instructions = ranges::getlines(input);
-
-  const auto code = ranges::view::transform(instructions,
-    [&keypad, &coordinates] (const string& line) {
-      coordinates = ranges::accumulate(line, coordinates, keypad);
+  const auto code = getlines(input) | view::transform([&keypad, &coordinates]
+    (const string& line) {
+      coordinates = accumulate(line, coordinates, keypad);
       return keypad.getEntry(coordinates);
     })
 
-  | ranges::to_vector;
+    | to_vector;
 
-  return string(code.data(), code.size());
+  return std::string(code.data(), code.size());
 }
