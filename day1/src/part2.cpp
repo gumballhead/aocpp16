@@ -37,8 +37,7 @@ int main() {
     return EXIT_FAILURE;
   }
 
-  const Coordinates coordinates = player.getCoordinates();
-  cout << abs(coordinates.x) + abs(coordinates.y) << endl;
+  cout << player.getDistance() << endl;
 
   return EXIT_SUCCESS;
 }

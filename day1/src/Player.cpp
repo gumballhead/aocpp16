@@ -49,6 +49,10 @@ void Player::walk(const int& distance = 1) {
   }
 }
 
-Coordinates Player::getCoordinates() {
+Coordinates Player::getCoordinates() const {
   return coordinates;
+}
+
+int Player::getDistance() const {
+  return std::abs(coordinates.x) + std::abs(coordinates.y);
 }

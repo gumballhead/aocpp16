@@ -13,5 +13,6 @@ class Player {
     void move(const Instruction& instruction);
     void turn(const char& direction);
     void walk(const int& distance);
-    Coordinates getCoordinates();
+    Coordinates getCoordinates() const;
+    int getDistance() const;
 };
