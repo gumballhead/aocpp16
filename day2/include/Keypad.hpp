@@ -1,10 +1,7 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
-#include <iostream>
-#include <string>
 #include <vector>
-#include <algorithm>
 
 using namespace std;
 
